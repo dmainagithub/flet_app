@@ -12,10 +12,23 @@ def main(page: Page):
     FG = '#3450a1'
     PINK = '#eb06ff'
 
+    categories_card = Row(
+        scroll=ScrollMode.AUTO         # scroll='auto'
+    )
+    categories = ['Business', 'Family', 'Friends']
+    for category in categories:
+        categories_card.controls.append(
+            Container(
+                border_radius=20,
+                bgcolor=BG, height=110, width=170, padding=15,
+            )
+        )
+
     first_page_contents = Container(
         content=Column(
             controls=[
-                Row(alignment='spaceBetween',controls=[
+                Row(
+                    alignment='spaceBetween', controls=[
                         Container(
                             content=Icon(
                                 icons.MENU)),
@@ -26,9 +39,16 @@ def main(page: Page):
                             ]
                         )
                     ]),
-
+                Container(height=20),
                 Text(
                     value='What\'s up, Olivia!'
+                ),
+                Text(
+                    value='CATEGORIES'
+                ),
+                Container(
+                    padding=padding.only(top=10, bottom=20, ),
+                    content=categories_card
                 )
             ]
         )
@@ -58,6 +78,8 @@ def main(page: Page):
             ]
         )
     )
+
+
     page.add(container)
 
 
